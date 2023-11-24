@@ -8,7 +8,7 @@ As you know, in Kubernetes nodes can appear and disappear just like pods. But yo
 
 Unfortunately, [community version of Cilium doesn't have HA-mode for egress](https://github.com/cilium/cilium/issues/18230).
 
-This operator implements a simple HA-mode for egress. It is assumed that you have 2 "low", empty" nodes for egress (similar to ingress) with label `node-role.kubernetes.io/egress: "true"`. Let's say that by default the node for egress outbound traffic is called egress-1. If this node goes into state "Not Ready", this operator will override all manifests for egress and replace this node there with reserve egress-2. 
+This operator implements a simple HA-mode for egress. It is assumed that you have 2 "low", empty" nodes for egress (similar to ingress) with label `node-role.kubernetes.io/egress: "true"`: egress-1 & egress-2. Let's say that by default the node for egress outbound traffic is called egress-1. If this node goes into state "Not Ready", this operator will override all manifests for egress and replace this node there with reserve egress-2. 
 
 This process takes about 30s.
 
