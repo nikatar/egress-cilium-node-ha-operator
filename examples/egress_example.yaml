@@ -1,0 +1,27 @@
+apiVersion: cilium.io/v2
+kind: CiliumEgressGatewayPolicy
+metadata:
+  name: example-egress
+spec:
+  selectors:
+  - podSelector:
+      matchLabels:
+        app.kubernetes.io/name: example
+        # The following label selects default namespace
+        io.kubernetes.pod.namespace: example
+  destinationCIDRs:
+  - "0.0.0.0/0"
+  # Configure the gateway node.
+  egressGateway:
+    # Specify which node should act as gateway for this policy.
+    nodeSelector:
+      matchLabels:
+        kubernetes.io/hostname: egress-1
+        #node-role.kubernetes.io/egress: "true"
+        #egress_ready: "true"
+
+    # Specify the IP address used to SNAT traffic matched by the policy.
+    # It must exist as an IP associated with a network interface on the instance.
+    #egressIP: 192.168.3.2
+    #interface: eth0
+
