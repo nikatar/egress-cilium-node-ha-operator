@@ -20,4 +20,4 @@ This process takes about 30s.
 
 - `kubectl -n <namespace> apply -f operator.yaml`
 
-  
+- exapmle dir contains example maninefest for `CiliumEgressGatewayPolicy`
