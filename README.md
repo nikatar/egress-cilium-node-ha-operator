@@ -6,7 +6,7 @@ It is simple k8s operator based on [Flant shell-operator](https://github.com/fla
 
 Unfortunately, [community version of Cilium doesn't have HA-mode for egress](https://github.com/cilium/cilium/issues/18230).
 
-This operator implements a simple HA-mode for egress. It is assumed that you have 2 "empty" with low resources(for example, 2/2) nodes for egress (similar to ingress). Let's say that by default the node for egress traffic is called egress-1. If this node goes into state "Not Ready", this operator will override all manifests for egress and replace this node there with reserve egress-2. 
+This operator implements a simple HA-mode for egress. It is assumed that you have 2 "empty" nodes for egress (similar to ingress) with low resources(for example, 2/2). Let's say that by default the node for egress traffic is called egress-1. If this node goes into state "Not Ready", this operator will override all manifests for egress and replace this node there with reserve egress-2. 
 
 This process takes about 30s.
 
